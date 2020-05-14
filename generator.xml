@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+ 
+<!-- 配置上下文    id="MySqlTable"自定义
+
+targetRuntime="MyBatis3Simple"　　生成简单增删改查语句
+-->
+
+  <context id="MySqlTable" targetRuntime="MyBatis3">
+  <!-- 关闭英文注解 -->
+<commentGenerator>
+  <property name="suppressAllComments" value="true" />
+</commentGenerator>
+  
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/mss"
+        userId="root"
+        password="123456">
+    </jdbcConnection>
+<!-- 转换器，主要针对类型 -->
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+    
+<!-- javaBean 放在哪个包下 -->
+    <javaModelGenerator targetPackage="com.wx.web.bean" targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+<!--映射文件位置 
+targetProject=".\src"   .该项目下
+ -->
+    <sqlMapGenerator targetPackage="com.wx.web.mapper"  targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+<!--生成mapper接口位置  -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.wx.web.mapper"  targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+<!--
+	  <table tableName="mf" domainObjectName="MaintenanceForm"></table>
+	  <table tableName="module" domainObjectName="Module"></table>
+	 <table tableName="muw" domainObjectName="MaintenanceAndUserAndWorker"></table>
+	 <table tableName="mw" domainObjectName="MaintenanceWorker"></table>
+	 <table tableName="user" domainObjectName="User"></table>
+		  -->
+		   <table tableName="wd" domainObjectName="WorkAndModule"></table>
+  </context>
+</generatorConfiguration>
